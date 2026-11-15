@@ -21,5 +21,5 @@ Proyecto mínimo en JavaScript que incluye las siguientes funciones:
 ## Uso
 Para ejecutar el programa y ver los resultados de los cálculos en la consola, lanza el siguiente comando:
 ```bash
-node index.js
+node scripts/index.js
 ```
