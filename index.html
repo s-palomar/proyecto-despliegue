@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Práctica 2 UD.2</title>
+    <script src="scripts/index.js" defer></script>
+  </head>
+  <body>
+    <h1>GIT y documentación</h1>
+    <h2>Cálculo de IVA</h2>
+    <div style="margin-bottom: 10px">
+      <label for="base">Introduce la base imponible en número: </label><br />
+      <input type="number" id="base" placeholder="Ej: 120.00" />
+    </div>
+
+    <div style="margin-bottom: 20px">
+      <label for="tipo">Tipo de IVA aplicable</label><br />
+      <select id="tipo">
+        <option value="">-- Selecciona una opción --</option>
+        <option value="exento">Exento (0%)</option>
+        <option value="reducido">Reducido (10%)</option>
+        <option value="normal">Normal (21%)</option>
+      </select>
+    </div>
+
+    <button id="btn-calcular" style="padding: 10px 20px; font-size: 16px">
+      Calcular precio con IVA
+    </button>
+
+    <hr />
+
+    <!-- Contenedores para que JavaScript inyecte los resultados o los errores -->
+    <div
+      id="errores"
+      style="color: red; font-weight: bold; margin-top: 10px"
+    ></div>
+    <div
+      id="resultado"
+      style="
+        margin-top: 20px;
+        font-family: monospace;
+        background: #f4f4f4;
+        padding: 15px;
+      "
+    ></div>
+
+    <h2>Simulador de inversión</h2>
+    <div style="margin-bottom: 10px">
+      <label for="capitalInicial">Capital Inicial (€):</label><br />
+      <input type="number" id="capitalInicial" placeholder="Mínimo 1000" />
+    </div>
+    <div style="margin-bottom: 10px">
+      <label for="aportacionMensual">Aportación Mensual extra (€):</label><br />
+      <input type="number" id="aportacionMensual" placeholder="Ej: 150" />
+    </div>
+    <div style="margin-bottom: 10px">
+      <label for="mesesSimulacion">Meses a simular (1 a 60):</label><br />
+      <input type="number" id="mesesSimulacion" placeholder="Ej: 24" />
+    </div>
+    <div style="margin-bottom: 20px">
+      <label for="perfilRiesgo">Perfil de Inversión (Intereses):</label><br />
+      <select id="perfilRiesgo">
+        <option value="">-- Selecciona un perfil --</option>
+        <option value="bajo">Riesgo Bajo (2% anual)</option>
+        <option value="medio">Riesgo Medio (5% anual)</option>
+        <option value="alto">Riesgo Alto (8% anual)</option>
+      </select>
+    </div>
+    <button id="btn-simular" style="padding: 10px 20px; font-size: 16px">
+      Calcular Proyección
+    </button>
+    <hr />
+    <!-- Contenedores para que JavaScript inyecte los resultados o los errores -->
+    <div
+      id="errorSimulador"
+      style="color: red; font-weight: bold; margin-top: 10px"
+    ></div>
+    <div
+      id="resultadoSimulador"
+      style="
+        margin-top: 20px;
+        font-family: monospace;
+        background: #f4f4f4;
+        padding: 15px;
+      "
+    ></div>
+
+    <h2></h2>
+
+
+  </body>
+</html>

@@ -1,0 +1,15 @@
+{
+  "name": "proyecto_despliegue",
+  "version": "1.0.0",
+  "description": "Proyecto mínimo en JavaScript que incluye las siguientes funciones:",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "prettier": "^3.10.1"
+  }
+}

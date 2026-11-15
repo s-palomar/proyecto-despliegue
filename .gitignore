@@ -1,0 +1,9 @@
+# Dependencias de Node
+node_modules/
+
+# Archivos de sistema en Windows y Mac
+Thumbs.db
+.DS_Store
+
+# Configuración local de Visual Studio Code
+.vscode/
