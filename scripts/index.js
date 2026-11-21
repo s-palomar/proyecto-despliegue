@@ -105,10 +105,10 @@ btnSimular.addEventListener("click", function() {
                 capitalAcumulado = Math.round(capitalAcumulado * 100) / 100; 
                 informe += `[-] Fin del Mes ${i} -> Capital acumulado: ${capitalAcumulado} € <br>`;
             }
-            resultadoSimulador.innerHTML = informe;
+            resultadoSimulador.textContent = informe;
         }
     } catch (e) {
-        errorSimulador.style.color = "red";
+        errorSimulador.style.color = "orange";
         errorSimulador.textContent = e.message;
     }
 });
