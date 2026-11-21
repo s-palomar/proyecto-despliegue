@@ -1,6 +1,13 @@
 "use strict";
 
-/* Cálculo impuestos */
+/**
+ * Calcula el precio final de un producto aplicando un porcentaje de impuesto (IVA).
+ *
+ * @param {number} precioBase - El precio inicial del producto sin impuestos.
+ * @param {number} porcentajeIva - El porcentaje de IVA a aplicar (ej. 21, 10, 4).
+ * @returns {number} El precio final con el impuesto incluido.
+ * @throws {Error} Si el precio o el porcentaje son negativos o no son números válidos.
+*/
 const btnCalcular = document.querySelector("#btn-calcular");
 const inputBase = document.querySelector("#base");
 const selectTipo = document.querySelector("#tipo");
@@ -47,7 +54,15 @@ btnCalcular.addEventListener("click", () => {
     }
 });
 
-/* Simulador inversión */
+/**
+ * Simula el crecimiento de un capital inicial aplicando interés compuesto y aportaciones.
+ *
+ * @param {number} capitalInicial - Cantidad de dinero inicial invertida.
+ * @param {number} tasaInteres - Tasa de interés anual en porcentaje.
+ * @param {number} meses - Duración de la inversión en meses.
+ * @returns {number} El capital total acumulado al finalizar el periodo.
+ * @throws {Error} Si alguno de los valores introducidos es menor o igual a cero.
+*/
 const btnSimular = document.querySelector("#btn-simular");
 const inputNombreCliente = document.querySelector("#nombreCliente");
 const inputCapitalInicial = document.querySelector("#capitalInicial");

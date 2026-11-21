@@ -23,3 +23,14 @@ Para ejecutar el programa y ver los resultados de los cálculos en la consola, l
 ```bash
 node scripts/index.js
 ```
+
+## Resolución de conflictos
+Para practicar la gestión de conflictos en Git, se provocó y resolvió un conflicto de fusión siguiendo estos pasos:
+
+1. **Provocación del conflicto:** Se modificó la misma línea de código que define el color del mensaje de error (`errorSimulador.style.color`) con valores distintos en dos ramas:
+   * En la rama `main` se estableció el valor `"purple"`.
+   * En la rama `fix/estilo-error` se estableció el valor `"darkred"`.
+2. **Detección:** Al intentar integrar los cambios desde `main` mediante `git merge fix/estilo-error`, Git detuvo la fusión mostrando un mensaje de `CONFLICT (content)` al detectar cambios incompatibles en la misma línea.
+3. **Resolución:** Se abrió el archivo en Visual Studio Code, se revisaron los bloques delimitados por `<<<<<<< HEAD` y `>>>>>>> fix/estilo-error`, y se seleccionó la opción **Accept Incoming Change** para conservar el color `"darkred"`. Finalmente, se guardó el archivo y se registró la solución mediante un nuevo `git commit`.
+
+

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: index.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: index.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>"use strict";
+
+/**
+ * Calcula el precio final de un producto aplicando un porcentaje de impuesto (IVA).
+ *
+ * @param {number} precioBase - El precio inicial del producto sin impuestos.
+ * @param {number} porcentajeIva - El porcentaje de IVA a aplicar (ej. 21, 10, 4).
+ * @returns {number} El precio final con el impuesto incluido.
+ * @throws {Error} Si el precio o el porcentaje son negativos o no son números válidos.
+*/
+const btnCalcular = document.querySelector("#btn-calcular");
+const inputBase = document.querySelector("#base");
+const selectTipo = document.querySelector("#tipo");
+const divErrores = document.querySelector("#errores");
+const divResultado = document.querySelector("#resultado");
+
+btnCalcular.addEventListener("click", () => {
+    /* Vaciamos div errores y resultado*/
+    divErrores.textContent = "";
+    divResultado.textContent = "";
+
+    /* Recuperamos valores introducidos*/
+    let base = parseFloat(inputBase.value);
+    let tipo = selectTipo.value.toLowerCase();
+    let iva = 1;
+
+    switch(tipo) {
+        case "exento":
+            iva = 1;
+            break;
+        case "minimo":
+            iva = 1.04;
+            break;
+        case "reducido":
+            iva = 1.1;
+            break;
+        case "normal":
+            iva = 1.21;
+            break;
+    }
+    
+    try {
+        if(isNaN(base) || base &lt;= 0){
+            throw new Error ("Introduzca un valor numérico positivo");
+        }
+        if(tipo === "") {
+            throw new Error ("Indique el tipo de IVA");
+        }
+
+        let total = (base * iva).toFixed(2);
+        divResultado.innerHTML = `El total con IVA es de: ${total} €`;
+    } catch (e) {
+        divErrores.innerHTML = e.message;
+    }
+});
+
+/**
+ * Simula el crecimiento de un capital inicial aplicando interés compuesto y aportaciones.
+ *
+ * @param {number} capitalInicial - Cantidad de dinero inicial invertida.
+ * @param {number} tasaInteres - Tasa de interés anual en porcentaje.
+ * @param {number} meses - Duración de la inversión en meses.
+ * @returns {number} El capital total acumulado al finalizar el periodo.
+ * @throws {Error} Si alguno de los valores introducidos es menor o igual a cero.
+*/
+const btnSimular = document.querySelector("#btn-simular");
+const inputNombreCliente = document.querySelector("#nombreCliente");
+const inputCapitalInicial = document.querySelector("#capitalInicial");
+const inputAportacionMensual = document.querySelector("#aportacionMensual");
+const inputMeses = document.querySelector("#mesesSimulacion");
+const selectPerfil = document.querySelector("#perfilRiesgo");
+const errorSimulador = document.querySelector("#errorSimulador");
+const resultadoSimulador = document.querySelector("#resultadoSimulador");
+
+function calcularTasaMensual(perfilRiesgo) {
+    let interesAnual = 0;
+
+    switch(perfilRiesgo) {
+        case "bajo":
+            interesAnual = 0.02;
+            break;
+        case "medio":
+            interesAnual = 0.05;
+            break;
+        case "alto":
+            interesAnual = 0.08;
+            break;
+        default:
+            interesAnual = 0;
+    }
+    return interesAnual / 12;
+}
+
+btnSimular.addEventListener("click", function() {
+    errorSimulador.textContent = "";
+    resultadoSimulador.textContent = "";
+
+    let capitalInicial = parseFloat(inputCapitalInicial.value);
+    let aportacionMensual = parseFloat(inputAportacionMensual.value);
+    let meses = parseInt(inputMeses.value);
+    let perfilRiesgo = selectPerfil.value.toLowerCase();
+
+    try {
+        if (isNaN(capitalInicial) || capitalInicial &lt; 1000) {
+            throw new Error ("El capital inicial ahorrado debe ser mayor o igual a 1000.");
+        } else if (isNaN(aportacionMensual) || aportacionMensual &lt; 0) {
+            throw new Error ("La aportación mensual extra no puede ser negativa.");
+        } else if (isNaN(meses) || meses &lt; 1 || meses > 60) {
+            throw new Error ("Los meses a simular deben estar entre 1 y 60 (ambos inclusive).");
+        } else if (perfilRiesgo === "") {
+            throw new Error ("El perfil de riesgo no puede estar vacío.");
+        } else {
+            let tasaMensual = calcularTasaMensual(perfilRiesgo);
+            let capitalAcumulado = capitalInicial;
+            let informe = "";
+
+            for (let i = 1; i &lt;= meses; i++) {
+                let intereses = capitalAcumulado * tasaMensual;
+                capitalAcumulado = capitalAcumulado + intereses + aportacionMensual;
+                capitalAcumulado = Math.round(capitalAcumulado * 100) / 100; 
+                informe += `[-] Fin del Mes ${i} -> Capital acumulado: ${capitalAcumulado} € &lt;br>`;
+            }
+            resultadoSimulador.textContent = informe;
+        }
+    } catch (e) {
+        errorSimulador.style.color = "darkred";
+        errorSimulador.textContent = e.message;
+    }
+});
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#btnCalcular">btnCalcular</a></li><li><a href="global.html#btnSimular">btnSimular</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.5</a> on Sat Nov 21 2026 17:05:43 GMT+0100 (hora estándar de Europa central)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

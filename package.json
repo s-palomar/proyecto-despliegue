@@ -4,12 +4,14 @@
   "description": "Proyecto mínimo en JavaScript que incluye las siguientes funciones:",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "docs": "jsdoc scripts/index.js -d docs/api"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "jsdoc": "^4.0.5",
     "prettier": "^3.10.1"
   }
 }
