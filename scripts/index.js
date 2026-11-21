@@ -21,6 +21,9 @@ btnCalcular.addEventListener("click", () => {
         case "exento":
             iva = 1;
             break;
+        case "minimo":
+            iva = 1.04;
+            break;
         case "reducido":
             iva = 1.1;
             break;
