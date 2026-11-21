@@ -109,6 +109,6 @@ btnSimular.addEventListener("click", function() {
         }
     } catch (e) {
         errorSimulador.style.color = "red";
-        errorSimulador.innerHTML = e.message;
+        errorSimulador.textContent = e.message;
     }
 });
